@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Ts学习总结 | KimiYung's Blog</title><meta name="author" content="KimiYung"><meta name="copyright" content="KimiYung"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="入门ts的学习总结及使用感受">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ts学习总结">
+<meta property="og:url" content="https://kimiyung.github.io/2023/03/22/ts1/index.html">
+<meta property="og:site_name" content="KimiYung&#39;s Blog">
+<meta property="og:description" content="入门ts的学习总结及使用感受">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picx.zhimg.com/v2-240f2e71c37b622d4de5c41db2cb5e5c_r.jpg?source=1940ef5c">
+<meta property="article:published_time" content="2023-03-22T07:49:57.000Z">
+<meta property="article:modified_time" content="2023-03-27T10:07:47.840Z">
+<meta property="article:author" content="KimiYung">
+<meta property="article:tag" content="Js">
+<meta property="article:tag" content="TypeScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picx.zhimg.com/v2-240f2e71c37b622d4de5c41db2cb5e5c_r.jpg?source=1940ef5c"><link rel="shortcut icon" href="/img/mianhua.png"><link rel="canonical" href="https://kimiyung.github.io/2023/03/22/ts1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Ts学习总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-27 18:07:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic2.zhimg.com/80/v2-caa89edfe81e72278b886d6041112f61_720w.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/reading/"><i class="fa-fw fa-sharp fa-solid fa-book"></i><span> 阅读</span></a></div><div class="menus_item"><a class="site-page" href="/pic/"><i class="fa-fw fa-sharp fa-solid fa-image"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://picx.zhimg.com/v2-240f2e71c37b622d4de5c41db2cb5e5c_r.jpg?source=1940ef5c')"><nav id="nav"><span id="blog-info"><a href="/" title="KimiYung's Blog"><span class="site-name">KimiYung's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/reading/"><i class="fa-fw fa-sharp fa-solid fa-book"></i><span> 阅读</span></a></div><div class="menus_item"><a class="site-page" href="/pic/"><i class="fa-fw fa-sharp fa-solid fa-image"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Ts学习总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-22T07:49:57.000Z" title="发表于 2023-03-22 15:49:57">2023-03-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-27T10:07:47.840Z" title="更新于 2023-03-27 18:07:47">2023-03-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Ts/">Ts</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Ts学习总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="TypeScript-学习心得及使用感受"><a href="#TypeScript-学习心得及使用感受" class="headerlink" title="TypeScript 学习心得及使用感受"></a>TypeScript 学习心得及使用感受</h2><p>最近系统性的学习了下 TypeScript，并且在一些个人项目中开始使用它。在此分享一下我对 TypeScript 的学习心得和使用感受。</p>
+<h2 id="什么是-TypeScript？"><a href="#什么是-TypeScript？" class="headerlink" title="什么是 TypeScript？"></a>什么是 TypeScript？</h2><p>用官方的话说，TypeScript 是 JavaScript 的一个超集，可以编译成纯 JavaScript 代码。TypeScript 引入了类型系统和其他一些新的语言特性，可以提供更好的代码可读性、可维护性和可扩展性，同时还能够增强开发过程中的静态检查和代码提示。它完全支持 js 代码，其实就是根据 js 做了很多限制和包装。</p>
+<h2 id="TypeScript-学习心得"><a href="#TypeScript-学习心得" class="headerlink" title="TypeScript 学习心得"></a>TypeScript 学习心得</h2><h3 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h3><p>TypeScript 的类型系统是其最核心的特性之一。它可以帮助我们在编码时检测一些类型错误，例如将一个字符串类型的变量赋值给一个数字类型的变量等。这种类型检查可以提高代码质量和可维护性，减少因类型错误引起的不必要的问题和调试时间。例如：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">num</span>: <span class="built_in">number</span> = <span class="string">&quot;hello&quot;</span>; <span class="comment">// error: Type &#x27;&quot;hello&quot;&#x27; is not assignable to type &#x27;number&#x27;.</span></span><br></pre></td></tr></table></figure>
+
+<p>同时，TypeScript 支持一些高级类型特性，例如联合类型、交叉类型、泛型等，这些类型特性可以使我们更方便地定义和使用一些复杂的数据类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">  <span class="attr">company</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">salary</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">PersonOrEmployee</span> = <span class="title class_">Person</span> | <span class="title class_">Employee</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">printInfo</span>(<span class="params">info: PersonOrEmployee</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;name&quot;</span> <span class="keyword">in</span> info) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;info.name&#125;</span> is <span class="subst">$&#123;info.age&#125;</span> years old.`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;info.company&#125;</span> pays $<span class="subst">$&#123;info.salary&#125;</span> per year.`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="类与接口"><a href="#类与接口" class="headerlink" title="类与接口"></a>类与接口</h3><p>在 TypeScript 中，我们可以使用类和接口来定义对象和数据结构。类是一种面向对象的编程方式，它可以定义一个对象的属性和方法。接口则是一种约束性的声明方式，它定义了一些属性和方法的类型和限制，但不会有具体的实现。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">type</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="title function_">makeSound</span>(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">implements</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">type</span>: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">type</span> = <span class="string">&quot;dog&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">makeSound</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;woof woof!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="模块和命名空间"><a href="#模块和命名空间" class="headerlink" title="模块和命名空间"></a>模块和命名空间</h3><p>TypeScript 中的模块和命名空间可以帮助我们更好地组织代码和避免全局变量污染。模块可以将代码分割成多个文件，每个文件只负责一个模块的功能。命名空间则是一种用来管理全局命名的机制，可以将不同模块中的同名变量和函数进行隔离。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; greet &#125; <span class="keyword">from</span> <span class="string">&#x27;./greeting&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">greet</span>(<span class="string">&#x27;world&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// greeting.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Hello</span>, $&#123;name&#125;!);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台（ Hello, $&#123;name&#125;! ）；</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="第三方库和声明文件"><a href="#第三方库和声明文件" class="headerlink" title="第三方库和声明文件"></a>第三方库和声明文件</h3><p>在使用 TypeScript 开发项目时，我们可能会使用一些第三方库，例如 React、Vue、Lodash 等。这些库可能没有内置的 TypeScript 类型定义文件，但是我们可以手动编写类型定义文件，以使 TypeScript 能够正确地理解这些库的 API。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lodash.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&quot;lodash&quot;</span> &#123;</span><br><span class="line">  <span class="keyword">function</span> chunk&lt;T&gt;(<span class="attr">array</span>: T[], <span class="attr">size</span>: <span class="built_in">number</span>): T[][];</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">debounce</span>(<span class="params">func: <span class="built_in">Function</span>, wait: <span class="built_in">number</span></span>): <span class="title class_">Function</span>;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，TypeScript 社区也提供了一些公共的类型定义文件，例如 @types/react、@types/lodash 等，可以方便地在项目中使用。</p>
+<h3 id="编译和调试"><a href="#编译和调试" class="headerlink" title="编译和调试"></a>编译和调试</h3><p>在使用 TypeScript 开发项目时，我们需要先将 TypeScript 代码编译成 JavaScript 代码才能在浏览器或者 Node.js 中运行。可以使用 TypeScript 提供的命令行工具 tsc 进行编译，或者使用一些构建工具和打包工具，例如 Webpack、Rollup 等。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc app.ts</span><br></pre></td></tr></table></figure>
+
+<p>同时，TypeScript 提供了一些调试工具和插件，可以帮助我们更方便地调试 TypeScript 代码。例如 Visual Studio Code 编辑器可以通过配置 launch.json 文件来进行 TypeScript 代码的调试。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Debug TypeScript&quot;</span>,</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;runtimeArgs&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;-r&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ts-node/register&quot;</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">&quot;args&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;$&#123;relativeFile&#125;&quot;</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="TypeScript-使用感受"><a href="#TypeScript-使用感受" class="headerlink" title="TypeScript 使用感受"></a>TypeScript 使用感受</h2><p>从我个人的角度来看，TypeScript 在开发过程中的确可以提供很多好处。使用 TypeScript 可以帮助我们更早地发现代码中的一些潜在错误和问题，以及避免一些常见的编码错误和陷阱。</p>
+<p>同时，TypeScript 还可以增强代码的可读性和可维护性，使我们的代码更易于理解和修改。在大型项目中，使用 TypeScript 可以帮助更好地组织代码、管理依赖关系，并且避免全局变量污染和命名冲突等问题。</p>
+<p>不过，使用 TypeScript 也有一些不便之处。首先是学习成本，需要花费一些时间来学习 TypeScript 的类型系统和一些高级特性。其次是编写类型定义文件的成本，特别是当使用的第三方库比较多时，需要编写大量的类型定义文件，写起来可能有点累的。不过相比报错无从下手来说，TypeScript 是真的香！越用越香！</p>
+<p>总的来说，我举得 TypeScript 是值得尝试和学习的，特别是在开发大型项目时。虽然学习和使用 TypeScript 需要付出一些成本，但是这些成本也是可以通过提高开发效率和代码质量来得到回报的。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文简单介绍了下 TypeScript 的一些基本概念和语法，以及我个人使用 TypeScript 的感受和体验。尽管 TypeScript 并不是必须的，但是它在实际的开发中确实可以帮助我们更好地组织和管理代码，并且提高代码的可读性和可维护性。</p>
+<p>当然，除了 TypeScript 之外，还有很多其他的工具和技术可以帮助我们更好地开发前端应用程序。对于我这种小菜鸟来说，最重要的是保持好奇心和学习的热情，不断尝试和探索新的技术和工具，从而不断提高自己的技能和能力。加油！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://juejin.cn/post/7214517573584568376">JayYang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://juejin.cn/post/7214517573584568376">https://juejin.cn/post/7214517573584568376</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">此文章版权个人所有，如有商业转载，请注明来自原作者</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Js/">Js</a><a class="post-meta__tags" href="/tags/TypeScript/">TypeScript</a></div><div class="post_share"><div class="social-share" data-image="https://picx.zhimg.com/v2-240f2e71c37b622d4de5c41db2cb5e5c_r.jpg?source=1940ef5c" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/22/js2/" title="公共子序列题型求解思路"><img class="cover" src="https://pic1.zhimg.com/v2-7cfc909ebe8d83683909846edd6b5232_r.jpg?source=1940ef5c" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">公共子序列题型求解思路</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/16/vue2-2/" title="Vue编写动态路由"><img class="cover" src="https://pic1.zhimg.com/v2-6cc0298000328b10f7ab82144974c2bc_r.jpg?source=1940ef5c" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vue编写动态路由</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/03/22/js2/" title="公共子序列题型求解思路"><img class="cover" src="https://pic1.zhimg.com/v2-7cfc909ebe8d83683909846edd6b5232_r.jpg?source=1940ef5c" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-22</div><div class="title">公共子序列题型求解思路</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81ODIyNi8zNDY4OQ=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic2.zhimg.com/80/v2-caa89edfe81e72278b886d6041112f61_720w.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">KimiYung</div><div class="author-info__description">相信人生不局限于动态规划与贪心，正在努力求解</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://gitee.com/yang-zhuqing"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/KimiYung" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:jayyang0518@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/KimiYung" target="_blank" title="Github"><i class="fa-sharp fa-solid fa-heart"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">喜欢花，更喜欢会结果的树。愿多年后回味起点时会感觉，烟波浩渺，一碧万倾。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScript-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%84%9F%E5%8F%97"><span class="toc-text">TypeScript 学习心得及使用感受</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-TypeScript%EF%BC%9F"><span class="toc-text">什么是 TypeScript？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScript-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97"><span class="toc-text">TypeScript 学习心得</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F"><span class="toc-text">类型系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="toc-text">类与接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text">模块和命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%92%8C%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="toc-text">第三方库和声明文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95"><span class="toc-text">编译和调试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScript-%E4%BD%BF%E7%94%A8%E6%84%9F%E5%8F%97"><span class="toc-text">TypeScript 使用感受</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/22/node1/" title="Node.js+Express后端JWT鉴权浅析"><img src="https://pic4.zhimg.com/v2-a59aaca7f33e3cae7acb5b58b0d1d78b_r.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Node.js+Express后端JWT鉴权浅析"/></a><div class="content"><a class="title" href="/2023/03/22/node1/" title="Node.js+Express后端JWT鉴权浅析">Node.js+Express后端JWT鉴权浅析</a><time datetime="2023-03-22T09:49:57.000Z" title="发表于 2023-03-22 17:49:57">2023-03-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/22/js2/" title="公共子序列题型求解思路"><img src="https://pic1.zhimg.com/v2-7cfc909ebe8d83683909846edd6b5232_r.jpg?source=1940ef5c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="公共子序列题型求解思路"/></a><div class="content"><a class="title" href="/2023/03/22/js2/" title="公共子序列题型求解思路">公共子序列题型求解思路</a><time datetime="2023-03-22T07:49:57.000Z" title="发表于 2023-03-22 15:49:57">2023-03-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/22/ts1/" title="Ts学习总结"><img src="https://picx.zhimg.com/v2-240f2e71c37b622d4de5c41db2cb5e5c_r.jpg?source=1940ef5c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ts学习总结"/></a><div class="content"><a class="title" href="/2023/03/22/ts1/" title="Ts学习总结">Ts学习总结</a><time datetime="2023-03-22T07:49:57.000Z" title="发表于 2023-03-22 15:49:57">2023-03-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/16/vue2-2/" title="Vue编写动态路由"><img src="https://pic1.zhimg.com/v2-6cc0298000328b10f7ab82144974c2bc_r.jpg?source=1940ef5c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue编写动态路由"/></a><div class="content"><a class="title" href="/2023/03/16/vue2-2/" title="Vue编写动态路由">Vue编写动态路由</a><time datetime="2023-03-16T09:49:57.000Z" title="发表于 2023-03-16 17:49:57">2023-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/15/zaji/" title="杂记"><img src="https://pic2.zhimg.com/v2-18a077136f2706975a4b49a681b056bd_r.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="杂记"/></a><div class="content"><a class="title" href="/2023/03/15/zaji/" title="杂记">杂记</a><time datetime="2023-03-15T09:49:57.000Z" title="发表于 2023-03-15 17:49:57">2023-03-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://picx.zhimg.com/v2-240f2e71c37b622d4de5c41db2cb5e5c_r.jpg?source=1940ef5c')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By KimiYung</div><div class="footer_custom_text">居然看到底了，你真好看！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="8843145216" data-server="tencent" data-type="playlist" data-fixed="true" data-autoplay="false" > </div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
